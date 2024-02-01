@@ -2,6 +2,9 @@ import type { Post } from "@/models/post";
 import { delay } from "@/utils/delay";
 import { defineStore } from "pinia";
 import { computed, ref, type Ref } from "vue";
+import postRepositoriesImpl from "../repository/impl/post_repo_impl";
+
+const postRepo = postRepositoriesImpl.getInstance();
 
 export const usePostStore =  defineStore('post', () => {
     //Define the state.
@@ -19,10 +22,12 @@ export const usePostStore =  defineStore('post', () => {
     const fetchPosts = async () => {
         posts.value = [];
         loading.value = true;
-        await delay(1000);
+        await delay(100);
         try {
-            const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-            posts.value = await response.json();
+            // const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+            const respose = await postRepo.getPosts();
+    
+            posts.value = respose;
             loading.value = false;
         } catch (e: any) {
             error.value = e;
@@ -35,11 +40,10 @@ export const usePostStore =  defineStore('post', () => {
     const fetchPost = async (id: number) => {
         post.value = null;
         loading.value = true;
-        await delay(1000);
+        await delay(100);
         try {
-            const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
-            const payload:Post = await response.json();
-            post.value = payload;
+            const response = await postRepo.getPost(id);
+            post.value = response;
             console.log(post.value);
             loading.value = false;
         } catch (e: any) {
