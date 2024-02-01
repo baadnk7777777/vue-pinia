@@ -12,12 +12,12 @@
 
 <script setup lang="ts">
 import {Vue3Lottie} from 'vue3-lottie';
-import AstronautJSON from '../assets/loading.json';
-import useAuthorStore from '@/stores/author';
-import usePostStore from '@/stores/post';
+import AstronautJSON from '../../../assets/loading.json';
+import useAuthorStore from '@/views/post_page/stores/author';
+import usePostStore from '../stores/post';
 import { storeToRefs } from 'pinia';
 import { useRoute } from 'vue-router';
-import Post from '../components/post_component/PostCard.vue';
+import Post from '../../../components/post_component/PostCard.vue';
 
 const route = useRoute();
 const {getPostAuthor} = storeToRefs(useAuthorStore());
@@ -30,4 +30,4 @@ const {fetchPost} = usePostStore();
 const postId:number = Number(route.params.id);
 fetchAuthors();
 fetchPost(postId);
-</script>
+</script>@/views/post_page/stores/author@/views/post_page/stores/post

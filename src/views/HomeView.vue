@@ -11,4 +11,4 @@
     <div class="bg-red-500">Hello</div>
     <p>{{ posts.length }}</p>
   </main>
-</template>
+</template>./post_page/stores/post

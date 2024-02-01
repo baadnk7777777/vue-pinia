@@ -23,9 +23,8 @@
     import { RouterLink } from 'vue-router'
     import { storeToRefs } from 'pinia'
     import { usePostStore } from '../stores/post';
-    // src\module\post_page\stores\post.ts
     import {Vue3Lottie} from 'vue3-lottie';
-    import AstronautJSON from '../assets/loading.json';
+    import AstronautJSON from '../../../assets/loading.json';
    
     const {posts, loading, error} = storeToRefs(usePostStore());
     const { fetchPosts } = usePostStore();
@@ -33,4 +32,4 @@
     fetchPosts();
     console.log(posts.value);
     
-</script>
+</script>../stores/post

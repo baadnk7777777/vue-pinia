@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import useCommnetStore from '@/stores/comments';
+import useCommnetStore from '../../views/post_page/stores/comments';
 import { storeToRefs } from 'pinia';
 import Commnet from '../post_component/CommentCard.vue';
     defineProps(['post', 'author']);
@@ -24,4 +24,4 @@ import Commnet from '../post_component/CommentCard.vue';
     const {fetchComments} = useCommnetStore();
 
     fetchComments();
-</script>@/module/post_page/stores/comments
+</script>

@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 // import HomeView from '../module/home_page/views/HomeView.vue';
-import PostsViewVue from '@/views/PostsView.vue';
-import PostViewVue from '@/views/PostView.vue';
+import PostsViewVue from '@/views/post_page/views/PostsView.vue';
+import PostViewVue from '@/views/post_page/views/PostView.vue';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [

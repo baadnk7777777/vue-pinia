@@ -11,5 +11,10 @@
   "compilerOptions": {
     "module": "ESNext",
     "moduleResolution": "Node",
+    "paths": {
+      "@/*": [
+        "./src/*" // set path `@/*` as alias of `src/*`
+      ]
+    },
   },
 }
