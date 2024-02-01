@@ -1,9 +1,11 @@
+import ApiNetworkImpl from "@/common/core/services/impl/api_network_impl";
 import type { Post } from "../../../../models/post";
 import { postRepositories } from "../post_repo";
 
 export class postRepositoriesImpl implements postRepositories {
 
     private static instance: postRepositoriesImpl | null = null;
+     apiNetwork = ApiNetworkImpl.getInstance();
 
     private constructor() {}
 
@@ -16,20 +18,26 @@ export class postRepositoriesImpl implements postRepositories {
 
 async getPosts (): Promise<Post[]> {
     try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-        const posts: Post[] = await response.json();
+        const repose = await this.apiNetwork.getPosts();
+        const posts: Post[] = repose;
         return posts;
     } catch (error) {
         console.error('Error fetching posts:', error);
         return [];
     }
 }
-async getPost(id: number): Promise<Post> {
-    const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
-    const payload:Post = await response.json();
-    console.log("payload");
-    console.log(payload);
-    return payload;
+async getPost(id: number): Promise<Post | null> {
+    const response = await this.apiNetwork.getPost(id);
+    
+    if(response == null) {
+        return null;
+    }else {
+        const payload:Post = response;
+        console.log("payload");
+        console.log(payload);
+        return payload;
+    }
+    
 }
 
 }

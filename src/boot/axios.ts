@@ -7,7 +7,7 @@ declare module '@vue/runtime-core' {
     $api: AxiosInstance;
   }
 }
-const api = axios.create({ baseURL: 'https://api.example.com' });
+const api = axios.create({ baseURL: 'https://jsonplaceholder.typicode.com/' });
 
 export default boot(({ app }) => {
   app.config.globalProperties.$axios = axios;
